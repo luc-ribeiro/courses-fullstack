@@ -1,5 +1,12 @@
-export default function Home() {
-  return (
-  <div>Hello World</div>
-  );
+import { getSession } from "@auth0/nextjs-auth0"
+import { redirect } from "next/navigation"
+
+export default async function App() {
+  const session = await getSession()
+
+  if (!session) {
+    redirect('/api/auth/login')
+  } else {
+    redirect('/home')
+  }
 }
