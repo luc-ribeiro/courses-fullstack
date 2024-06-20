@@ -4,6 +4,9 @@ import Link from "next/link"
 export default withPageAuthRequired(async function Home() {
   const session = await getSession()
 
+  console.log(session)
+
+
   return (
     <>
     <h1>Hello World, {session?.user.name}</h1>

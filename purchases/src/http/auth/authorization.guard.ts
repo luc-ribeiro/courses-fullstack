@@ -4,7 +4,7 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common'
-import type { ConfigService } from '@nestjs/config'
+import { ConfigService } from '@nestjs/config'
 import { auth } from 'express-oauth2-jwt-bearer'
 import { promisify } from 'node:util'
 import { GqlExecutionContext } from '@nestjs/graphql'
@@ -30,6 +30,8 @@ export class AuthorizationGuard implements CanActivate {
         jwksUri: `${this.AUTH0_DOMAIN}.well-known/jwks.json`,
       }),
     )
+
+    console.log(jwtCheck)
 
     try {
       await jwtCheck(req, res)
