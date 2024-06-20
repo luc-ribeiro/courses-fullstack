@@ -3,14 +3,26 @@ version: '3'
 services:
   # Application
 
-  database:
+  database-classroom:
+    image: postgres
+    ports:
+      - '5433:5433'
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: courses-classroom
+      PGPORT: 5433
+    volumes:
+      - 'postgresql_data:/postgresql'
+
+  database-purchases:
     image: postgres
     ports:
       - '5434:5434'
     environment:
       POSTGRES_USER: docker
       POSTGRES_PASSWORD: docker
-      POSTGRES_DB: app
+      POSTGRES_DB: courses-purchases
       PGPORT: 5434
     volumes:
       - 'postgresql_data:/postgresql'
