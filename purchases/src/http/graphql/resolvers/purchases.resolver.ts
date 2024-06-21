@@ -1,6 +1,5 @@
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from "@nestjs/graphql";
 import { UseGuards } from "@nestjs/common";
-import { GraphQLError } from "graphql";
 
 import { AuthorizationGuard } from "src/http/auth/authorization.guard";
 import { CurrentUser, type AuthUser } from "src/http/auth/current-user";
