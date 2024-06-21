@@ -4,7 +4,7 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common'
-import type { ConfigService } from '@nestjs/config'
+import { ConfigService } from '@nestjs/config'
 import { auth } from 'express-oauth2-jwt-bearer'
 import { promisify } from 'node:util'
 import { GqlExecutionContext } from '@nestjs/graphql'
