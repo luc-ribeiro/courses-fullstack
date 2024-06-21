@@ -5,7 +5,7 @@ import { CreateProductInput } from "../inputs/create-product-input";
 import { UseGuards } from "@nestjs/common";
 import { AuthorizationGuard } from "src/http/auth/authorization.guard";
 
-@Resolver()
+@Resolver(() => Product)
 export class ProductsResolver {
   constructor(private productsService: ProductsService) { }
 

@@ -31,8 +31,6 @@ export class AuthorizationGuard implements CanActivate {
       }),
     )
 
-    console.log(jwtCheck)
-
     try {
       await jwtCheck(req, res)
 

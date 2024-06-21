@@ -7,10 +7,12 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { DatabaseModule } from '../database/database.module'
 import { ProductsResolver } from './graphql/resolvers/products.resolver'
 import { ProductsService } from 'src/services/products.service'
+import { PurchasesResolver } from './graphql/resolvers/purchases.resolver'
+import { PurchasesService } from 'src/services/purchases.service'
 
 @Module({
   imports: [
-    ConfigModule.forRoot(), 
+    ConfigModule.forRoot(),
     DatabaseModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
@@ -18,7 +20,13 @@ import { ProductsService } from 'src/services/products.service'
     })
   ],
   providers: [
-    ProductsResolver, ProductsService
+    // Resolvers
+    ProductsResolver,
+    PurchasesResolver,
+    
+    // Services
+    ProductsService,
+    PurchasesService
   ],
 })
-export class HttpModule {}
+export class HttpModule { }
