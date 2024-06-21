@@ -6,4 +6,16 @@ export class CoursesService {
   constructor(
     private prisma: PrismaService
   ) {}
+
+  listAllCourses() {
+    return this.prisma.course.findMany()
+  }
+
+  getCourseById(id: string) {
+    return this.prisma.course.findUnique({
+      where: {
+        id
+      }
+    })
+  }
 }

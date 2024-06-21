@@ -12,8 +12,8 @@ export class Enrollment {
   studentId: string
 
   @Field(() => Course)
-  courseCourse: Course
-  courseCourseId: string
+  course: Course
+  courseId: string
 
   @Field(() => Date, { nullable: true })
   cancelledAt: Date
