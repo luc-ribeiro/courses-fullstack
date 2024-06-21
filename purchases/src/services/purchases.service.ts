@@ -2,6 +2,11 @@ import { Injectable } from "@nestjs/common";
 
 import { PrismaService } from "src/database/prisma/prisma.service";
 
+interface CreatePurchaseParams {
+  productId: string
+  customerId: string
+}
+
 @Injectable()
 export class PurchasesService {
   constructor(private prisma: PrismaService) { }
@@ -14,4 +19,22 @@ export class PurchasesService {
     })
   }
 
+  async createPurchase({productId, customerId}: CreatePurchaseParams) {
+    const product = await this.prisma.product.findUnique({
+      where: {
+        id: productId
+      }
+    })
+
+    if (!product) {
+      throw new Error('Product not found')
+    }
+
+    return this.prisma.purchase.create({
+      data: {
+        customerId,
+        productId
+      }
+    })
+  }
 }
