@@ -13,7 +13,7 @@ services:
       POSTGRES_DB: courses-classroom
       PGPORT: 5433
     volumes:
-      - 'postgresql_data:/postgresql'
+      - 'postgresql_data:/postgresql/classroom'
 
   database-purchases:
     image: postgres
@@ -25,7 +25,7 @@ services:
       POSTGRES_DB: courses-purchases
       PGPORT: 5434
     volumes:
-      - 'postgresql_data:/postgresql'
+      - 'postgresql_data:/postgresql/purchase'
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
