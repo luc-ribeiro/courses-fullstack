@@ -2,7 +2,7 @@ import path from 'node:path'
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
+import { ApolloFederationDriver, ApolloFederationDriverConfig } from '@nestjs/apollo'
 
 import { DatabaseModule } from '../database/database.module'
 import { ProductsResolver } from './graphql/resolvers/products.resolver'
@@ -18,8 +18,8 @@ import { MessagingModule } from 'src/messaging/messaging.module'
     ConfigModule.forRoot(),
     DatabaseModule,
     MessagingModule,
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
+    GraphQLModule.forRoot<ApolloFederationDriverConfig>({
+      driver: ApolloFederationDriver,
       autoSchemaFile: path.resolve(process.cwd(), 'src/schema.gql'),
     })
   ],
@@ -28,7 +28,7 @@ import { MessagingModule } from 'src/messaging/messaging.module'
     ProductsResolver,
     PurchasesResolver,
     CustomersResolver,
-    
+
     // Services
     ProductsService,
     PurchasesService,
