@@ -1,17 +1,21 @@
-import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0"
-import Link from "next/link"
+import { GET_USER_INFO } from '@/graphql/queries/me'
+import { FETCH_PRODUCTS } from '@/graphql/queries/products'
+import { createApolloClient } from '@/lib/apollo'
+import { getAccessToken, getSession, withPageAuthRequired } from "@auth0/nextjs-auth0"
 
-export default withPageAuthRequired(async function Home() {
+async function Home() {
   const session = await getSession()
 
-  console.log(session)
-
+  const apolloClient = createApolloClient()
+  const { data, loading, error } = await apolloClient.query({ query: GET_USER_INFO })
 
   return (
     <>
-    <h1>Hello World, {session?.user.name}</h1>
-    
-    <a href="/api/auth/logout">Logout</a>
+      <h1>Hello World, {session?.user.name}</h1>
+
+      <a href="/api/auth/logout">Logout</a>
     </>
   )
-}, { returnTo: '/api/auth/login' })
+}
+
+export default withPageAuthRequired(Home, { returnTo: '/api/auth/login' })

@@ -15,8 +15,8 @@ export class CustomersResolver {
     private purchasesService: PurchasesService
   ) { }
 
-  @Query(() => Customer)
   @UseGuards(AuthorizationGuard)
+  @Query(() => Customer)
   me(
     @CurrentUser() user: AuthUser
   ) {
