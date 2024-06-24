@@ -1,14 +1,9 @@
 import { ApolloClient, InMemoryCache, createHttpLink, type NormalizedCacheObject, from } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { getAccessToken } from "@auth0/nextjs-auth0";
+import getAuth0Token from "@/actions/get-auth0-token";
 import type { GetServerSidePropsContext } from "next";
 
 export type ApolloClientContext = GetServerSidePropsContext
-
-async function getAuth0Token() {
-  const { accessToken } = await getAccessToken()
-  return accessToken
-}
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3332/graphql',
