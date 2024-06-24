@@ -31,7 +31,7 @@ import { GraphQLModule } from '@nestjs/graphql';
             willSendRequest({ request, context }) {
               request.http.headers.set(
                 'authorization',
-                context?.headers?.authorization
+                context?.['headers']?.['authorization'],
               )
             }
           })
