@@ -18,6 +18,7 @@ A fullstack application allows users to browse a comprehensive list of available
 - Enrollment: Enables users to easily enroll in courses of interest.
 - Microservices Architecture: Built with a modular architecture to ensure scalability and flexibility.
 - GraphQL Integration: Utilizes GraphQL for efficient and declarative data fetching and mutations.
+- Auth0 Authentication: Provides an easy way to integrate authentication and authorization for web, mobile, and legacy applications.
 
 ![Screenshot_2](https://github.com/luc-ribeiro/courses-fullstack/assets/69688077/260ddef7-b147-480b-befd-7034be834d95)
 
@@ -34,6 +35,7 @@ A fullstack application allows users to browse a comprehensive list of available
 - KafkaJS
 - Apollo
 - GraphQL
+- Auth0
 - TailwindCSS
 
 <h2 id="usage">💡 How to run</h2>
